@@ -11,6 +11,6 @@ class Rating extends Model
 
     public function book()
     {
-        return $this->belongsTo(Book::class);
+        return $this->belongsTo(Book::class); // Inverse one to many relationship
     }
 }

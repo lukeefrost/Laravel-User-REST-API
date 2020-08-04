@@ -11,6 +11,7 @@ class BookController extends Controller
 
     public function construct()
     {
+        // Secure all Api Endpoints
         $this->middleware('auth:api')->except(['index', 'show']);
     }
 
@@ -21,6 +22,7 @@ class BookController extends Controller
      */
     public function index()
     {
+        // Returns a list of the books
         return BookResource::collection(Book::with('ratings')->paginate(25));
     }
 
@@ -32,6 +34,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        // Creates a new book with the ID of the currently authenticated user along with the details of the book, and persists it to the database. It then returns a book resource based on the newly created book.
         $book = Book::create([
           'user_id' => $request->user()->id,
           'title' => $request->title,
@@ -49,6 +52,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
+        // Accepts a Book model and retuns a book resource based on the specified book.
         return new BookResource($book);
     }
 
@@ -80,6 +84,7 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
+        // Deletes specified book from the database
         $book->delete();
 
         return response()->json(null, 204);

@@ -12,11 +12,13 @@ class RatingController extends Controller
 
     public function __construct()
     {
+        // Secured endpoint to rate a book
         $this->middleware('auth:api');
     }
 
     public function store(Request $request, Book $book)
     {
+        // firstOrCreate - Checks if the user has already rated a specific book
         $rating = Rating::firstOrCreate(
           [
             'user_id' => $request->user()->id,

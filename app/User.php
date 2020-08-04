@@ -40,16 +40,16 @@ class User extends Authenticatable implements JWTSubject
 
     public function books()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Book::class); // One to many relationship
     }
 
     public function getJWTIdentifier()
     {
-        return $this->getKey();
+        return $this->getKey(); // Gets the identifier that will be stored in the subject claim in JWT
     }
 
     public function getJWTCustomClaims()
     {
-        return [];
+        return []; // Allows to add any custom claims to add to the JWT
     }
 }

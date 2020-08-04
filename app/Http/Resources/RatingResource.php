@@ -18,8 +18,8 @@ class RatingResource extends JsonResource
           'user_id' => $this->user_id,
           'book_id' => $this->book_id,
           'rating' => $this->rating,
-          'created_at' => (string) $this->created_at,
-          'updated_at' => (string) $this->updated_at,
+          'created_at' => (string) $this->created_at, // Cast dates as strings to avoid returning them as objects in the response
+          'updated_at' => (string) $this->updated_at, // Cast dates as strings to avoid returning them as objects in the response
           'book' => $this->book,
         ];
     }

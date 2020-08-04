@@ -11,11 +11,11 @@ class Book extends Model
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class); // Inverse one to many relationship
     }
 
     public function ratings()
     {
-        return $this->hasMany(Rating::class);
+        return $this->hasMany(Rating::class); // One to many relationship
     }
 }
